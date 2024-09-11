@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "swagger-autogen": "node swagger.js",
-    "start": "PORT=$PORT node index.js",
+    "start": "PORT=$PORT node index.js",  
     "dev": "nodemon index.js",
     "release": "release-it"
   },
@@ -45,7 +45,7 @@
     "assert": "^*",
     "async-get-file": "^*",
     "await-sleep": "^*",
-    "axios": "^*",
+    "axios": "^0.21.1",  
     "boxen": "^*",
     "bull": "^*",
     "chalk": "4.1.2",
