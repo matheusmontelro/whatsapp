@@ -110,6 +110,15 @@ const manager = require("./routers/Manager");
 app.use(router, loggerMiddleware);
 app.use(manager);
 
+// Sincronização do banco de dados usando Sequelize
+const sequelize = require('./config').sequelize;  // Instância do Sequelize
+
+sequelize.sync({ force: false }).then(() => {
+    console.log('Database & tables created!');
+}).catch((error) => {
+    console.error('Error syncing database:', error);
+});
+
 // Inicialização do servidor
 server.listen(config.port, async (error) => {
   if (error) {
