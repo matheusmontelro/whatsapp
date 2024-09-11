@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "swagger-autogen": "node swagger.js",
-    "start": "PORT=$PORT node index.js",  # Usando a variável de ambiente PORT
+    "start": "PORT=$PORT node index.js",
     "dev": "nodemon index.js",
     "release": "release-it"
   },
