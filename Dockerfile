@@ -1,26 +1,23 @@
 FROM ubuntu:18.04
 
-# Definir diretório de trabalho
 WORKDIR /usr/src/app
 
-# Atualizar pacotes e instalar dependências essenciais
-RUN apt update && apt install -y \
-  curl \
-  chromium-chromedriver
-
-# Instalar Node.js 14.x
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
-  apt install -y nodejs
-
-# Copiar arquivos de dependências e instalar pacotes Node.js
-COPY package*.json ./
-RUN npm install
-
-# Copiar o restante dos arquivos da aplicação
+# Copia todos os arquivos para o diretório de trabalho
 COPY . .
 
-# Expor a porta que a aplicação vai usar (opcional, mas recomendado)
-EXPOSE 3333
+# Atualiza os pacotes e instala dependências
+RUN apt update && apt install curl -y
 
-# Comando de inicialização
-CMD PORT=$PORT node index.js
+# Instala Node.js e Chromium
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt install -y nodejs
+RUN apt install -y chromium-chromedriver
+
+# Garante que o diretório de banco de dados exista
+RUN mkdir -p /usr/src/app/database
+
+# Instala as dependências do projeto
+RUN npm install
+
+# Comando para iniciar o aplicativo
+CMD ["npm", "start"]
