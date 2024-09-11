@@ -17,7 +17,7 @@
   },
   "production": {
     "dialect": "sqlite",
-    "storage": "database/db.sqlite",
+    "storage": "/usr/src/app/database/db.sqlite",  // Caminho absoluto para produção
     "define": {
       "timestamps": false
     },
