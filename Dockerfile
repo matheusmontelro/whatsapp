@@ -6,14 +6,17 @@ WORKDIR /usr/src/app
 # Copia todos os arquivos para o diretório de trabalho
 COPY . .
 
-# Atualiza os pacotes e instala dependências
+# Atualiza os pacotes e instala dependências essenciais
 RUN apt update && apt install -y \
     curl \
     libc6 \
+    build-essential \
+    g++ \
+    python3 \
     chromium-chromedriver \
     && apt upgrade -y
 
-# Instala Node.js e Chromium
+# Instala Node.js
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt install -y nodejs
 
